@@ -3,7 +3,7 @@
 <?php
 require_once '../model/ModelVin.php';
 
-class ControllerVin {
+class XXXControllerVin {
  // --- page d'acceuil
  public static function caveAccueil() {
   include 'config.php';

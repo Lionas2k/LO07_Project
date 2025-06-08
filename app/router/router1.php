@@ -1,7 +1,7 @@
 
 <!-- ----- debut Router1 -->
 <?php
-require ('../controller/ControllerVin.php');
+require('../controller/XXXControllerVin.php');
 
 // --- récupération de l'action passée dans l'URL
 $query_string = $_SERVER['QUERY_STRING'];
@@ -20,13 +20,13 @@ switch ($action) {
  case "vinReadId" :
  case "vinCreate" :
  case "vinCreated" :
-  ControllerVin::$action();
+  XXXControllerVin::$action();
   break;
 
  // Tache par défaut
  default:
   $action = "caveAccueil";
-  ControllerVin::$action();
+  XXXControllerVin::$action();
 }
 ?>
 <!-- ----- Fin Router1 -->
