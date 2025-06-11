@@ -9,9 +9,9 @@ if (!defined('DEBUG')) {
 
 // ===============
 // Configuration de la base de données sur dev-isi
-$dsn = 'mysql:dbname=lemercie;host=localhost;charset=utf8';
-$username = 'lemercie';
-$password = '.....';
+$dsn = "mysql:dbname=claverim;host=localhost;charset=utf8";
+$username = "claverim";
+$password = "b7ph67nd";
 
 if (!defined('LOCAL')) {
     define('LOCAL', TRUE);
@@ -19,9 +19,9 @@ if (!defined('LOCAL')) {
 
 if (LOCAL) {
     // Configuration de la base de données sur localhost
-    $dsn = 'mysql:dbname=CAVE;host=localhost;charset=utf8';
-    $username = 'root';
-    $password = 'root';
+    $dsn = "mysql:dbname=claverim;host=localhost;charset=utf8";
+    $username = "claverim";
+    $password = "b7ph67nd";
 }
  
 // chemin absolu vers le répertoire du projet SUR DEV-ISI 

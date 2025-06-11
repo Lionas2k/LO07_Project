@@ -1,10 +1,8 @@
 <?php
-require_once "Model.php";
+require_once 'Model.php';
 
 class ModelCreneau {
-    private $id;
-    private $jour;
-    private $horaire;
+    private $id, $jour, $horaire;
 
     public function __construct($id = NULL, $jour = NULL, $horaire = NULL) {
         if (!is_null($id)) {
@@ -14,24 +12,47 @@ class ModelCreneau {
         }
     }
 
+    // Getters
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getJour() {
+        return $this->jour;
+    }
+
+    public function getHoraire() {
+        return $this->horaire;
+    }
+
+    // Récupère tous les créneaux
     public static function getAll() {
-        $sql = "SELECT * FROM Creneau";
-        $req = Model::$pdo->query($sql);
-        $req->setFetchMode(PDO::FETCH_CLASS, 'ModelCreneau');
-        return $req->fetchAll();
+        try {
+            $database = Model::getInstance();
+            $query = "SELECT * FROM creneau";
+            $statement = $database->prepare($query);
+            $statement->execute();
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelCreneau");
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
     }
 
-    public static function getById($id) {
-        $sql = "SELECT * FROM Creneau WHERE id = :id_tag";
-        $req = Model::$pdo->prepare($sql);
-        $values = array("id_tag" => $id);
-        $req->execute($values);
-        $req->setFetchMode(PDO::FETCH_CLASS, 'ModelCreneau');
-        return $req->fetch();
+    // Récupère un créneau par son id
+    public static function getOne($id) {
+        try {
+            $database = Model::getInstance();
+            $query = "SELECT * FROM creneau WHERE id = :id";
+            $statement = $database->prepare($query);
+            $statement->execute(['id' => $id]);
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelCreneau");
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
     }
-
-    public function getId() { return $this->id; }
-    public function getJour() { return $this->jour; }
-    public function getHoraire() { return $this->horaire; }
 }
 ?>

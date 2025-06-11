@@ -1,10 +1,8 @@
 <?php
-require_once "Model.php";
+require_once 'Model.php';
 
 class ModelRdv {
-    private $idPersonne;
-    private $idProjet;
-    private $idCreneau;
+    private $idPersonne, $idProjet, $idCreneau;
 
     public function __construct($idPersonne = NULL, $idProjet = NULL, $idCreneau = NULL) {
         if (!is_null($idPersonne)) {
@@ -14,31 +12,51 @@ class ModelRdv {
         }
     }
 
+    // Getters
+    public function getIdPersonne() {
+        return $this->idPersonne;
+    }
+
+    public function getIdProjet() {
+        return $this->idProjet;
+    }
+
+    public function getIdCreneau() {
+        return $this->idCreneau;
+    }
+
+    // Récupère tous les rendez-vous
     public static function getAll() {
-        $sql = "SELECT * FROM Rdv";
-        $req = Model::$pdo->query($sql);
-        $req->setFetchMode(PDO::FETCH_CLASS, 'ModelRdv');
-        return $req->fetchAll();
+        try {
+            $database = Model::getInstance();
+            $query = "SELECT * FROM rdv";
+            $statement = $database->prepare($query);
+            $statement->execute();
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelRdv");
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
     }
 
-    public static function getByIds($idPersonne, $idProjet, $idCreneau) {
-        $sql = "SELECT * FROM Rdv 
-                WHERE idPersonne = :idPersonne_tag 
-                AND idProjet = :idProjet_tag 
-                AND idCreneau = :idCreneau_tag";
-        $req = Model::$pdo->prepare($sql);
-        $values = array(
-            "idPersonne_tag" => $idPersonne,
-            "idProjet_tag" => $idProjet,
-            "idCreneau_tag" => $idCreneau
-        );
-        $req->execute($values);
-        $req->setFetchMode(PDO::FETCH_CLASS, 'ModelRdv');
-        return $req->fetch();
+    // Récupère un rendez-vous par triple identifiant
+    public static function getOne($idPersonne, $idProjet, $idCreneau) {
+        try {
+            $database = Model::getInstance();
+            $query = "SELECT * FROM rdv WHERE idPersonne = :idPersonne AND idProjet = :idProjet AND idCreneau = :idCreneau";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'idPersonne' => $idPersonne,
+                'idProjet' => $idProjet,
+                'idCreneau' => $idCreneau
+            ]);
+            $results = $statement->fetchAll(PDO::FETCH_CLASS, "ModelRdv");
+            return $results;
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
     }
-
-    public function getIdPersonne() { return $this->idPersonne; }
-    public function getIdProjet() { return $this->idProjet; }
-    public function getIdCreneau() { return $this->idCreneau; }
 }
 ?>
