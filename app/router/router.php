@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+<!-- Début de Router -->
+
+>>>>>>> 78e86e2b08fc5ff83495e17a0e7371a3d04a1639
 <?php
 require ('../controller/ControllerProjet.php');
 
@@ -25,3 +30,8 @@ switch ($action) {
         break;
 }
 ?>
+<<<<<<< HEAD
+=======
+
+<!-- Fin de router -->
+>>>>>>> 78e86e2b08fc5ff83495e17a0e7371a3d04a1639
