@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-=======
-<!-- Début de ModelCreneau -->
 
->>>>>>> 78e86e2b08fc5ff83495e17a0e7371a3d04a1639
 <?php
 require_once 'Model.php';
 
@@ -61,8 +57,4 @@ class ModelCreneau {
     }
 }
 ?>
-<<<<<<< HEAD
-=======
 
-<!-- Fin de ModelCreneau -->
->>>>>>> 78e86e2b08fc5ff83495e17a0e7371a3d04a1639
