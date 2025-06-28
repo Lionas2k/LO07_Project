@@ -59,5 +59,27 @@ class ModelRdv {
             return NULL;
         }
     }
+    public static function getPlanningByProjet($id_projet) {
+        try {
+            $database = Model::getInstance();
+            $query = "
+            SELECT p.nom AS etu_nom, p.prenom AS etu_prenom,
+                   exam.nom AS exam_nom, exam.prenom AS exam_prenom,
+                   c.date AS date_creneau
+            FROM rdv r 
+            JOIN personne p ON p.id = r.etudiant
+            JOIN creneau c ON r.creneau = c.id
+            JOIN personne exam ON c.examinateur = exam.id
+            WHERE c.projet = :id
+        ";
+            $statement = $database->prepare($query);
+            $statement->execute(['id' => $id_projet]);
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return [];
+        }
+    }
+
 }
 ?>

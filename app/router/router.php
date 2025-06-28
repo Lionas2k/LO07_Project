@@ -4,7 +4,8 @@ session_start();
 
 require ('../controller/ControllerProjet.php');
 require ('../controller/ControllerLogin.php');
-
+require('../controller/ControllerExaminateur.php');
+require('../controller/ControllerRdv.php');
 // --- récupération de l'action passée dans l'URL
 $query_string = $_SERVER['QUERY_STRING'];
 parse_str($query_string, $param);
@@ -23,8 +24,10 @@ $args = $param;
 switch ($action) {
 
     // Routes pour ControllerProjet
-    case "projetReadAll":
+    case "projetAllResp":
     case "projetReadOne":
+    case "projetCreate":
+    case "projetCreated":
         ControllerProjet::$action($args);
         break;
 
@@ -36,8 +39,16 @@ switch ($action) {
     case "treatRegister":
         ControllerLogin::$action($args);
         break;
-
-
+    case "examinateurReadAll":
+    case "examinateurInserted":
+    case "examinateurInsertForm":
+    case "selectProjetExaminateur":
+    case "listExaminateursByProjet":
+        ControllerExaminateur::$action($args);
+        break;
+    case "planningForm":
+    case "planningProjet":
+        ControllerRdv::$action($args);
     default:
         include '../view/Accueil.php';
         break;

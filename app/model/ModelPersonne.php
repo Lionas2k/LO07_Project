@@ -73,6 +73,18 @@ class ModelPersonne {
             return NULL;
         }
     }
+    public static function getAllExaminateurs() {
+        try {
+            $database = Model::getInstance();
+            $query = "SELECT * FROM personne WHERE role_examinateur = 1";
+            $statement = $database->prepare($query);
+            $statement->execute();
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return [];
+        }
+    }
 
     // Insère une nouvelle personne
     public static function insert($nom, $prenom, $role_responsable, $role_examinateur, $role_etudiant, $login, $password) {
@@ -102,5 +114,52 @@ class ModelPersonne {
             return NULL;
         }
     }
+    public static function insertExaminateur($nom, $prenom) {
+        try {
+            $database = Model::getInstance();
+            $query1 = "SELECT MAX(id) FROM personne";
+            $statement = $database->query($query1);
+            $number= $statement->fetch();
+            $id = $number['0'];
+            $id++;
+
+            $query = "INSERT INTO personne (id,nom, prenom, role_responsable, role_examinateur, role_etudiant, login, password)
+                  VALUES (:id,:nom, :prenom, 0, 1, 0,:login,:password)";
+
+            $login = strtolower($prenom . '.' . $nom);
+            $password = "default";
+            $statement = $database->prepare($query);
+            $statement->execute([
+                'id'=> $id,
+                'nom' => $nom,
+                'prenom' => $prenom,
+                'login'=> $login,
+                'password' =>$password
+            ]);
+
+            return $database->lastInsertId();
+        } catch (PDOException $e) {
+            printf("%s - %s<p/>\n", $e->getCode(), $e->getMessage());
+            return NULL;
+        }
+    }
+
+    public static function getExaminateursByProjet($projet_id) {
+        try {
+            $database = Model::getInstance();
+            $query = "SELECT personne.id, personne.nom, personne.prenom
+                  FROM personne
+                  JOIN creneau ON personne.id = creneau.examinateur
+                  WHERE creneau.projet = :projet_id";
+            $statement = $database->prepare($query);
+            $statement->execute(['projet_id' => $projet_id]);
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            printf("Erreur : %s<br/>", $e->getMessage());
+            return [];
+        }
+    }
+
+
 }
 ?>

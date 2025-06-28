@@ -26,21 +26,21 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Responsable</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="router.php?action=viewAllProjets">Liste de mes projets</a></li>
-            <li><a class="dropdown-item" href="router.php?action=viewAjouterProjet">Ajout d'un projet</a></li>
+            <li><a class="dropdown-item" href="router.php?action=projetAllResp">Liste de mes projets</a></li>
+            <li><a class="dropdown-item" href="router.php?action=projetCreate">Ajout d'un projet</a></li>
 
           <li>
             <hr class="dropdown-divider">
           </li>
 
-            <li><a class="dropdown-item" href="router.php?action=viewAllExaminateurs">Liste des examinateurs</a></li>
-            <li><a class="dropdown-item" href="router.php?action=viewAjouterExaminateur">Ajout d'un examinateur</a></li>
-            <li><a class="dropdown-item" href="router.php?action=viewExaminateursProjet">Liste des examinateurs d'un projet</a></li>
+            <li><a class="dropdown-item" href="router.php?action=examinateurReadAll">Liste des examinateurs</a></li>
+            <li><a class="dropdown-item" href="router.php?action=examinateurInsertForm">Ajout d'un examinateur</a></li>
+            <li><a class="dropdown-item" href="router.php?action=selectProjetExaminateur">Liste des examinateurs d'un projet</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
 
-            <li><a class="dropdown-item" href="router.php?action=viewPlanningProjet">Planning d'un projet</a></li>
+            <li><a class="dropdown-item" href="router.php?action=planningForm">Planning d'un projet</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
