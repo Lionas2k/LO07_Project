@@ -39,6 +39,7 @@ switch ($action) {
     case "treatRegister":
         ControllerLogin::$action($args);
         break;
+        // Routes pour examinateur
     case "examinateurReadAll":
     case "examinateurInserted":
     case "examinateurInsertForm":
@@ -46,9 +47,13 @@ switch ($action) {
     case "listExaminateursByProjet":
         ControllerExaminateur::$action($args);
         break;
+        // route pour RDV
     case "planningForm":
     case "planningProjet":
+    case "viewRdv":
+    case "viewPrendreRdv":
         ControllerRdv::$action($args);
+        break;
     default:
         include '../view/Accueil.php';
         break;
