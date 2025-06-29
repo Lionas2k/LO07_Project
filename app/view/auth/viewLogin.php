@@ -14,6 +14,11 @@
 <body>
 <div class="container">
     <h1>Soutenances 2025: Login</h1>
+    <?php if (isset($_GET['error'])): ?>
+        <div class="alert alert-danger" role="alert">
+            Identifiant ou mot de passe incorrect.
+        </div>
+    <?php endif; ?>
     <form action="router.php?action=treatLogin" method="post">
         <div class="mb-3">
             <label for="login" class="form-label">Identifiant</label>

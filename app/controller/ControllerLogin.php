@@ -11,12 +11,13 @@ class ControllerLogin {
         $user = ModelPersonne::checkLogin($login, $password);
 
         if ($user) {
-
             $_SESSION["user"] = $user;
+            header('Location: router.php?action=menu');
+            exit();
+        } else {
+            header('Location: router.php?action=login&error=1');
+            exit();
         }
-
-        header('Location: router.php?action=menu');
-        exit();
     }
 
     // Affichage de la page de login
