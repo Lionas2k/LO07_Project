@@ -23,5 +23,18 @@ class ControllerRdv {
         require($vue);
     }
 
-
+    public static function viewRdv() {
+        if (!isset($_SESSION['user'])) {
+            header('Location: ?action=login');
+            exit();
+        }
+        $id_personne = $_SESSION['user']->getId();
+        $rdvs = ModelRdv::getRdvByPersonne($id_personne);
+        $pagetitle = 'Mes rendez-vous';
+        include 'config.php';
+        $vue = $root . '/app/view/etudiant/viewRdv.php';
+        if (DEBUG)
+            echo ("ControllerRdv : viewRdv : vue = $vue");
+        require($vue);
+    }
 }

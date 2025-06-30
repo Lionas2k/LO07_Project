@@ -39,6 +39,7 @@ switch ($action) {
     case "treatRegister":
         ControllerLogin::$action($args);
         break;
+        // Routes pour examinateur
     case "examinateurReadAll":
     case "examinateurInserted":
     case "examinateurInsertForm":
@@ -46,9 +47,40 @@ switch ($action) {
     case "listExaminateursByProjet":
         ControllerExaminateur::$action($args);
         break;
+        // route pour RDV
     case "planningForm":
     case "planningProjet":
+    case "viewRdv":
+    case "viewPrendreRdv":
         ControllerRdv::$action($args);
+        break;
+    case "mesProjetsExaminateur":
+        ControllerProjet::mesProjetsExaminateur($args);
+        break;
+    case "innovationData":
+        include '../view/innovationData.php';
+        break;
+    case "innovationMvc":
+        include '../view/innovationMvc.php';
+        break;
+    case "viewAllCreneaux":
+        ControllerExaminateur::viewAllCreneaux($args);
+        break;
+    case "viewCreneauxProjet":
+        ControllerExaminateur::viewCreneauxProjet($args);
+        break;
+    case "viewAjouterCreneau":
+        ControllerExaminateur::viewAjouterCreneau($args);
+        break;
+    case "ajouterCreneau":
+        ControllerExaminateur::ajouterCreneau($args);
+        break;
+    case "viewAjouterCreneauxConsecutifs":
+        ControllerExaminateur::viewAjouterCreneauxConsecutifs($args);
+        break;
+    case "ajouterCreneauxConsecutifs":
+        ControllerExaminateur::ajouterCreneauxConsecutifs($args);
+        break;
     default:
         include '../view/Accueil.php';
         break;

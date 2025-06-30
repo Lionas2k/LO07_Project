@@ -7,25 +7,25 @@
     include $root . '/app/view/fragment/fragmentJumbotron.html';
     ?>
 
-    <h2>Liste complète de mes créneaux</h2>
+    <h2>Mes projets en tant qu'examinateur</h2>
 
-    <?php if (empty($creneaux)) : ?>
-        <p>Aucun créneau trouvé.</p>
+    <?php if (empty($projets)) : ?>
+        <p>Aucun projet trouvé.</p>
     <?php else : ?>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Date et heure</th>
-                    <th>Projet</th>
+                    <th>Libellé</th>
+                    <th>Groupe</th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($creneaux as $creneau) : ?>
+                <?php foreach ($projets as $projet) : ?>
                     <tr>
-                        <td><?= htmlspecialchars($creneau['id']) ?></td>
-                        <td><?= htmlspecialchars($creneau['creneau']) ?></td>
-                        <td><?= htmlspecialchars($creneau['projet']) ?></td>
+                        <td><?= htmlspecialchars($projet['id']) ?></td>
+                        <td><?= htmlspecialchars($projet['label']) ?></td>
+                        <td><?= htmlspecialchars($projet['groupe']) ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -34,6 +34,4 @@
 </div>
 
 <?php include $root . '/app/view/fragment/fragmentFooter.html'; ?>
-</body>
-
-</rewritten_file> 
+</body> 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Patrimoine 2024</title>
+    <title>Connexion - Système RDV soutenance</title>
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
         rel="stylesheet"
@@ -14,6 +14,11 @@
 <body>
 <div class="container">
     <h1>Soutenances 2025: Login</h1>
+    <?php if (isset($_GET['error'])): ?>
+        <div class="alert alert-danger" role="alert">
+            Identifiant ou mot de passe incorrect.
+        </div>
+    <?php endif; ?>
     <form action="router.php?action=treatLogin" method="post">
         <div class="mb-3">
             <label for="login" class="form-label">Identifiant</label>
