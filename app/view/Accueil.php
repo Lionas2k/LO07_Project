@@ -7,6 +7,11 @@
     include 'fragment/fragmentMenu.php';
     include 'fragment/fragmentJumbotron.html';
     ?>
+    <?php if (!empty($_SESSION['message'])): ?>
+        <p class="alert"><?= $_SESSION['message'] ?></p>
+        <?php unset($_SESSION['message']); ?>
+    <?php endif; ?>
+
 </div>
 
 

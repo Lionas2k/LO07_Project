@@ -134,6 +134,23 @@ class ModelRdv {
             return false;
         }
     }
+    public static function insert($id_creneau, $id_etudiant) {
+        $database = Model::getInstance();
+        $query1 = "SELECT MAX(id) FROM rdv";
+        $statement = $database->query($query1);
+        $number = $statement->fetch();
+        $id = $number['0'];
+        $id++;
+        $pdo = Model::getInstance();
+        $sql = "INSERT INTO rdv (id, creneau, etudiant) VALUES (:id, :creneau, :etudiant)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            'id'=>$id,
+            'creneau' => $id_creneau,
+            'etudiant' => $id_etudiant
+        ]);
+    }
+
 
 }
 ?>

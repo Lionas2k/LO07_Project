@@ -109,6 +109,16 @@ class ModelCreneau {
         ]);
         return $statement->fetchColumn() > 0;
     }
+    public static function dateExiste($datetime) {
+        $pdo = Model::getInstance();
+        $sql = "SELECT COUNT(*) FROM creneau WHERE creneau = :datetime";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['datetime' => $datetime]);
+        return $stmt->fetchColumn() > 0;
+    }
+
+
+
 }
 ?>
 

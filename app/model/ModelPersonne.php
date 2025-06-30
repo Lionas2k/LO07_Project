@@ -160,6 +160,14 @@ class ModelPersonne {
         }
     }
 
+    public static function getExaminateurs() {
+        $pdo = Model::getInstance();
+        $sql = "SELECT * FROM personne WHERE role_examinateur = TRUE";
+        $stmt = $pdo->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
 
 }
 ?>

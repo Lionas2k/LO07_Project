@@ -97,6 +97,14 @@ class ModelProjet {
         $statement->execute(['examinateur_id' => $examinateur_id]);
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+    public static function getProjetByEtudiant() {
+        $pdo = Model::getInstance();
+        $sql = "SELECT P.* FROM projet P";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
 
 }
 ?>

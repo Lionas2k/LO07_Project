@@ -52,6 +52,8 @@ switch ($action) {
     case "planningProjet":
     case "viewRdv":
     case "viewPrendreRdv":
+    case "creerForm":
+    case "creerRdv":
         ControllerRdv::$action($args);
         break;
     case "mesProjetsExaminateur":

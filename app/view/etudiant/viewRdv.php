@@ -9,7 +9,7 @@ require($root . '/app/view/fragment/fragmentHeader.html');
     include $root . '/app/view/fragment/fragmentMenu.php';
     ?>
 
-    <h2><?php echo $pagetitle; ?></h2>
+    <h2>LO07</h2>
     
     <?php if (empty($rdvs)): ?>
         <div class="alert alert-info">
@@ -47,7 +47,7 @@ require($root . '/app/view/fragment/fragmentHeader.html');
     <?php endif; ?>
     
     <div class="mt-3">
-        <a href="router.php?action=viewPrendreRdv" class="btn btn-success">Prendre un nouveau rendez-vous</a>
+        <a href="router.php?action=creerForm" class="btn btn-success">Prendre un nouveau rendez-vous</a>
         <a href="router.php?action=accueil" class="btn btn-secondary">Retour à l'accueil</a>
     </div>
 </div>

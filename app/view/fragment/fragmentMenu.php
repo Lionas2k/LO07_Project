@@ -59,7 +59,7 @@
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Etudiant</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="router.php?action=viewRdv">Liste de mes RDV</a></li>
-            <li><a class="dropdown-item" href="router.php?action=viewPrendreRdv">Prendre un RDV pour un projet</a></li>
+            <li><a class="dropdown-item" href="router.php?action=creerForm">Prendre un RDV pour un projet</a></li>
           </ul>
         </li>
         <?php } ?>
