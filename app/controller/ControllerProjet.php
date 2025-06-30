@@ -1,4 +1,3 @@
-
 <?php
 require_once '../model/ModelProjet.php';
 
@@ -43,6 +42,20 @@ class ControllerProjet {
         } else {
             $vue = $root . '/app/view/error.php'; // Vue d'erreur standard
         }
+        require($vue);
+    }
+
+    // Ajout : liste des projets où l'utilisateur est examinateur
+    public static function mesProjetsExaminateur() {
+        if (!isset($_SESSION['user'])) {
+            header('Location: ?action=login');
+            exit();
+        }
+        $id_examinateur = $_SESSION['user']->getId();
+        $projets = ModelProjet::getProjetsByExaminateur($id_examinateur);
+        $pagetitle = "Mes projets en tant qu'examinateur";
+        include 'config.php';
+        $vue = $root . '/app/view/examinateur/viewMesProjets.php';
         require($vue);
     }
 }

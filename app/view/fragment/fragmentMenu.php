@@ -46,7 +46,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Examinateur</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="router.php?action=viewAllProjets">Liste des projets</a></li>
+            <li><a class="dropdown-item" href="router.php?action=mesProjetsExaminateur">Liste de mes projets</a></li>
             <li><a class="dropdown-item" href="router.php?action=viewAllCreneaux">Liste complète de mes créneaux</a></li>
             <li><a class="dropdown-item" href="router.php?action=viewCreneauxProjet">Liste de mes créneaux pour un projet</a></li>
             <li><a class="dropdown-item" href="router.php?action=viewAjouterCreneau">Ajouter un créneau à un projet</a></li>

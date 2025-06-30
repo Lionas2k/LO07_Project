@@ -1,4 +1,3 @@
-
 <?php
 require_once 'Model.php';
 
@@ -87,6 +86,17 @@ class ModelProjet {
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
+    // Récupère les projets où la personne est examinateur
+    public static function getProjetsByExaminateur($examinateur_id) {
+        $database = Model::getInstance();
+        $query = "SELECT DISTINCT projet.id, projet.label, projet.groupe
+                  FROM projet
+                  JOIN creneau ON projet.id = creneau.projet
+                  WHERE creneau.examinateur = :examinateur_id";
+        $statement = $database->prepare($query);
+        $statement->execute(['examinateur_id' => $examinateur_id]);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 
 }
 ?>
