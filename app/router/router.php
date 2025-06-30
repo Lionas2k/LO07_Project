@@ -54,6 +54,12 @@ switch ($action) {
     case "viewPrendreRdv":
         ControllerRdv::$action($args);
         break;
+    case "innovationData":
+        include '../view/innovationData.php';
+        break;
+    case "innovationMvc":
+        include '../view/innovationMvc.php';
+        break;
     default:
         include '../view/Accueil.php';
         break;

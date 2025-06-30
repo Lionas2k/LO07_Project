@@ -66,8 +66,8 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Innovation</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="router.php?action=viewProposerAmelioration.php">##</a></li>
-            <li><a class="dropdown-item" href="router.php?action=viewProposerFonctionnalite.php">##</a></li>
+            <li><a class="dropdown-item" href="router.php?action=innovationData">Automatisation Comptable</a></li>
+            <li><a class="dropdown-item" href="router.php?action=innovationMvc">MVC & Symfony</a></li>
           </ul>
         </li>
         <?php if (isset($_SESSION["user"])) { ?>
